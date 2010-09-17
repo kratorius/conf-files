@@ -1,0 +1,99 @@
+" Use Vim defaults instead of 100% vi compatibility
+set nocompatible
+set background=dark
+" more powerful backspacing
+set backspace=indent,eol,start
+set backupcopy=no
+set autoindent
+set textwidth=0
+set history=50
+set incsearch
+set ignorecase
+set showmatch
+set splitright
+set omnifunc=syntaxcomplete#Complete
+set ofu=syntaxcomplete#Complete
+filetype plugin on
+filetype indent on
+
+" binding for tabs
+map <C-t> :tabnew<CR>
+map <M-left> :tabp<CR>
+map <M-right> :tabn<CR>
+
+" Map + and - (and < and >) to resize split (vsplit)
+if bufwinnr(1)
+	map + <c-w>+
+	map - <c-w>-
+	map < <c-w><
+	map > <c-w>>
+endif
+
+" enable ruler
+set ruler
+" enable command autocompleting (like bash)
+set wildmode=longest,list
+syntax on
+
+" Map F5 to show line's numbers
+:map <F5> :if &number == 1 <Bar>
+     \   exec 'set nonumber' <Bar>
+     \   echo 'Nonumber' <Bar>
+     \ else <Bar>
+     \   exec 'set number' <Bar>
+     \   echo 'Number' <Bar>
+     \ endif <CR>
+
+" Map F6 to enable/disable syntax highlighting
+:map <F6> :if exists("syntax_on") <Bar>
+     \   syntax off <Bar>
+     \   echo 'Syntax off' <Bar>
+     \ else <Bar>
+     \   syntax enable <Bar>
+     \   echo 'Syntax on' <Bar>
+     \ endif <CR>
+
+" Map F7 to enable/disable autoindent on paste
+:map <F7> :if &paste == 1 <Bar>
+     \   exec 'set nopaste' <Bar>
+     \   echo "Nopaste" <Bar>
+     \ else <Bar>
+     \   exec 'set paste <Bar>' <Bar>
+     \   echo "Paste" <Bar>
+     \ endif <CR>
+
+" spellchecker
+" setlocal spell spelllang=it_IT
+" set spell
+
+" viewpdf in vim
+autocmd BufReadPre *.pdf set ro
+autocmd BufReadPost *.pdf %!pdftotext -nopgbrk "%" - 
+
+" Python editing (set tab as 4 spaces for .py and .java)
+autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab 
+autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab|set smarttab|set softtabstop=4
+autocmd FileType c set tabstop=2|set shiftwidth=2|set expandtab|set smarttab|set softtabstop=2
+autocmd FileType cpp set tabstop=2|set shiftwidth=2|set expandtab|set smarttab|set softtabstop=2
+autocmd FileType java set tabstop=4|set shiftwidth=4|set expandtab|set smarttab|set softtabstop=4
+autocmd FileType haskell set tabstop=8|set shiftwidth=8|set expandtab|set smarttab|set softtabstop=8
+autocmd FileType tex set tabstop=2|set shiftwidth=2|set expandtab|set smarttab|set softtabstop=2
+autocmd FileType html set tabstop=2|set shiftwidth=2|set expandtab|set smarttab|set softtabstop=2
+
+" visualizza i .doc
+autocmd BufReadPre *.doc set ro
+autocmd BufReadPre *.doc set hlsearch!
+autocmd BufReadPost *.doc %!antiword "%" 
+
+" Omnicomplete
+set completeopt=longest,menuone
+highlight Pmenu ctermfg=6 ctermbg=4
+highlight PmenuSel ctermfg=4 ctermbg=6
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
+
+
