@@ -1,0 +1,20 @@
+[user]
+  email = giuliani.v@gmail.com
+  name = Ivan Giuliani
+[alias]
+  ci = commit
+  co = checkout
+  logs = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  logl = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ls = ls-files
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[core]
+  editor = vim
+  autocrlf = false
+  safecrlf = true
+  excludesfile = /home/ivan/.gitignore
+[apply]
+  whitespace = fix
