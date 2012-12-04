@@ -39,13 +39,7 @@ set wildmode=longest,list
 syntax on
 
 " Map F5 to show line's numbers
-:map <F5> :if &number == 1 <Bar>
-     \   exec 'set nonumber' <Bar>
-     \   echo 'Nonumber' <Bar>
-     \ else <Bar>
-     \   exec 'set number' <Bar>
-     \   echo 'Number' <Bar>
-     \ endif <CR>
+:nnoremap <F5> :set nonumber!<CR>:set foldcolumn=0<CR>
 
 " Map F6 to enable/disable syntax highlighting
 :map <F6> :if exists("syntax_on") <Bar>
