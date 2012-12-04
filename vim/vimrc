@@ -12,6 +12,11 @@ set showmatch
 set splitright
 set omnifunc=syntaxcomplete#Complete
 set ofu=syntaxcomplete#Complete
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+set softtabstop=2
 filetype plugin on
 filetype indent on
 colorscheme desert
@@ -76,11 +81,17 @@ autocmd FileType java set tabstop=4|set shiftwidth=4|set expandtab|set smarttab|
 autocmd FileType haskell set tabstop=8|set shiftwidth=8|set expandtab|set smarttab|set softtabstop=8
 autocmd FileType tex set tabstop=2|set shiftwidth=2|set expandtab|set smarttab|set softtabstop=2
 autocmd FileType html set tabstop=2|set shiftwidth=2|set expandtab|set smarttab|set softtabstop=2
+autocmd FileType htmldjango set tabstop=2|set shiftwidth=2|set expandtab|set smarttab|set softtabstop=2
+autocmd FileType rst set tabstop=1|set shiftwidth=1|set expandtab|set smarttab|set softtabstop=1
+autocmd FileType matlab set tabstop=2|set shiftwidth=2|set expandtab|set smarttab|set softtabstop=2
+autocmd FileType prolog set tabstop=8|set shiftwidth=8|set expandtab|set smarttab|set softtabstop=8
 
-" visualizza i .doc
-autocmd BufReadPre *.doc set ro
-autocmd BufReadPre *.doc set hlsearch!
-autocmd BufReadPost *.doc %!antiword "%" 
+" Remove trailing whitespaces when it makes sense
+autocmd FileType c autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+autocmd FileType cpp autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+autocmd FileType java autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+
+au! BufNewFile,BufRead *.csv setf csv
 
 " Omnicomplete
 set completeopt=longest,menuone
@@ -91,6 +102,3 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
-
-
