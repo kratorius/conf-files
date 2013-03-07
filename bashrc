@@ -16,26 +16,12 @@ shopt -s checkwinsize
 bind '"\e[A"':history-search-backward
 bind '"\e[B"':history-search-forward
 
-
-# enable color support of ls and also add handy aliases
-if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-    #alias dir='ls --color=auto --format=vertical'
-    #alias vdir='ls --color=auto --format=long'
-fi
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-
+# enable color support of ls
+eval "`dircolors -b`"
 alias ls='ls --color=always'
-#alias sudo='sudo PATH=$PATH -i'
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" -a -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+if [ -f /etc/bash_completion ]; then
+  source /etc/bash_completion
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -65,13 +51,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profiles
-# sources /etc/bash.bashrc).
-#if [ -f /etc/bash_completion ]; then
-#    . /etc/bash_completion
-#fi
-
 # Enable bash history
 export HISTFILESIZE=20000
 export HISTSIZE=20000
@@ -86,14 +65,10 @@ bind '"\e[B"':history-search-forward
 export PYTHONPATH=~/python:$PYTHONPATH
 export PATH=$PATH:~/bin
 
-# depot tools
-export PATH=$PATH:~/development/depot_tools
-
 # Android
-export PATH=$PATH:~/development/android-sdk/tools
-
-# App Engine
-export PATH=$PATH:~/development/google_appengine
+export ANDROID_HOME=~/development/android/android-sdk-linux
+export PATH=$PATH:~/development/android/android-sdk-linux/platform-tools
+export PATH=$PATH:~/development/android/android-sdk-linux/tools
 
 # GIT alias list
 alias st='git status'
