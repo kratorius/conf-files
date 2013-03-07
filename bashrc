@@ -64,5 +64,21 @@ export PATH=$PATH:~/development/android/android-sdk-linux/tools
 alias st='git status'
 alias ci='git ci -am'
 
+# Mercurial alias list
+alias hs='hg status'
+alias hc='hg commit'
+
+# virtualenv alias
+alias vea='source ENV/bin/activate'
+alias ved='deactivate'
+
+# ls
+alias ll='ls -lah'
+
 # alias
 alias fastmplayer='mplayer -vfm ffmpeg -lavdopts fast:skiploopfilter=all'
+
+# fix against broken bash completion with mplayer (does not complete files it
+# believes not being videos)
+complete -f _longopt mplayer
+eval "$(rbenv init -)"
