@@ -1,3 +1,6 @@
+" vim requires posix-compatible shells underneath
+set shell=/bin/bash
+
 " Use Vim defaults instead of 100% vi compatibility
 set nocompatible
 " more powerful backspacing
