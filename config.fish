@@ -2,7 +2,7 @@
 set fish_greeting
 
 # add custom scripts to $PATH
-set PATH $HOME/bin $PATH
+set PATH $HOME/bin $HOME/.local/bin $PATH
 
 # I hate gnome keyring and I don't want to use it ever again, however
 # gnome thinks I have to use it and prints stupid warnings all over my
