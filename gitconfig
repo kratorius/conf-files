@@ -17,5 +17,6 @@
   autocrlf = false
   safecrlf = true
   excludesfile = /home/ivan/.gitignore
+  pager = less -r
 [apply]
   whitespace = fix
