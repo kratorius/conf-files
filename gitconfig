@@ -22,3 +22,5 @@
   whitespace = fix
 [branch]
   autosetuprebase = always
+[merge]
+  log = true
