@@ -20,3 +20,5 @@
   pager = less -r
 [apply]
   whitespace = fix
+[branch]
+  autosetuprebase = always
