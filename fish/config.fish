@@ -1,4 +1,4 @@
-# disable fish greeting
+# Remove welcome message
 set fish_greeting
 
 # add ~/bin to local path
