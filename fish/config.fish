@@ -1,8 +1,8 @@
 # Remove welcome message
 set fish_greeting
 
-# add ~/bin to local path
-set PATH $HOME/bin $PATH $HOME/.local/bin
+# add custom scripts to $PATH
+set PATH $HOME/bin $HOME/.local/bin $PATH
 
 # disable gnome keyring
 set -e GNOME_KEYRING_CONTROL
