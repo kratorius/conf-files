@@ -37,5 +37,19 @@ function fish_prompt
 
   echo -n (__fish_git_prompt)
   set_color normal
+
+  if set -q VIRTUAL_ENV
+    echo -n -s (set_color -b 900000 white) "/" (basename "$VIRTUAL_ENV")
+    set_color normal
+  end
+
   echo '$ '
 end
+
+# VirtualFish
+set -g VIRTUALFISH_COMPAT_ALIASES # uncomment for virtualenvwrapper-style commands
+. $HOME/development/virtualfish/virtual.fish
+# optional plugins
+. $HOME/development/virtualfish/auto_activation.fish
+. $HOME/development/virtualfish/global_requirements.fish
+. $HOME/development/virtualfish/projects.fish
