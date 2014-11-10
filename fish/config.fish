@@ -39,7 +39,7 @@ function fish_prompt
   set_color normal
 
   if set -q VIRTUAL_ENV
-    echo -n -s (set_color -b 900000 white) "/" (basename "$VIRTUAL_ENV")
+    echo -n -s (set_color purple) "%" (basename "$VIRTUAL_ENV")
     set_color normal
   end
 
