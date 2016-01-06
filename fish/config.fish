@@ -4,21 +4,10 @@ set fish_greeting
 # add custom scripts to $PATH
 set PATH $HOME/bin $HOME/.local/bin $PATH
 
-# disable gnome keyring
+# I hate gnome keyring and I don't want to use it ever again, however
+# gnome thinks I have to use it and prints stupid warnings all over my
+# output. Just get rid of it.
 set -e GNOME_KEYRING_CONTROL
-
-# Go
-set GOPATH /home/ivan/go
-set PATH /usr/local/go/bin $PATH
-
-# add play to the path
-set PATH $HOME/.system/play $PATH
-
-# add depot_tools to the path
-set PATH $HOME/development/depot_tools $PATH
-
-# enable the the new fish pager (which will be enabled by default before long)
-set fish_new_pager 1
 
 function prompt_pwd --description 'Print the current working directory, NOT shortened to fit the prompt'
   printf '%s:' (hostname|cut -d . -f 1)
@@ -42,17 +31,16 @@ function fish_prompt
 
   echo -n (__fish_git_prompt)
   set_color normal
-
   echo '$ '
 end
 
 # VirtualFish
 set -g VIRTUALFISH_COMPAT_ALIASES # uncomment for virtualenvwrapper-style commands
-. $HOME/development/virtualfish/virtual.fish
+. $HOME/.config/fish/virtualfish/virtual.fish
 # optional plugins
-. $HOME/development/virtualfish/auto_activation.fish
-. $HOME/development/virtualfish/global_requirements.fish
-. $HOME/development/virtualfish/projects.fish
+. $HOME/.config/fish/virtualfish/auto_activation.fish
+. $HOME/.config/fish/virtualfish/global_requirements.fish
+. $HOME/.config/fish/virtualfish/projects.fish
 
 # Termcap colors
 set -x LESS_TERMCAP_mb (printf "\e[01;31m")
