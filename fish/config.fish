@@ -9,6 +9,15 @@ set PATH $HOME/bin $HOME/.local/bin $PATH
 # output. Just get rid of it.
 set -e GNOME_KEYRING_CONTROL
 
+. ~/.config/fish/autoenv.fish
+
+# Attempt to load the $AUTOENVFISH_FILE if there's one when loading a new terminal.
+# This is particularly useful in the context of tmux, as opening a new split or
+# workspace will spawn a new shell.
+if test -e $AUTOENVFISH_FILE
+    . $AUTOENVFISH_FILE
+end
+
 function prompt_pwd --description 'Print the current working directory, NOT shortened to fit the prompt'
   printf '%s:' (hostname|cut -d . -f 1)
   if test "$PWD" != "$HOME"
